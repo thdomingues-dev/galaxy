@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
 // Components
 import MenuItem from '../components/menu-item'
@@ -18,9 +17,11 @@ const Home: NextPage = () => {
       </h1>
       <section className='px-80'>
         <div className='grid grid-cols-3'>
-          <MenuItem title='Personagens' imgSrc='https://starwars-visualguide.com/assets/img/categories/character.jpg' />
-          <MenuItem title='Planetas' imgSrc='https://starwars-visualguide.com/assets/img/categories/planets.jpg' />
-          <MenuItem title='Filmes' imgSrc='https://starwars-visualguide.com/assets/img/categories/films.jpg' />
+          <Link href="/characters" passHref>
+            <MenuItem title='Personagens' imgSrc='https://starwars-visualguide.com/assets/img/categories/character.jpg' />
+          </Link>
+            <MenuItem title='Planetas' imgSrc='https://starwars-visualguide.com/assets/img/categories/planets.jpg' />
+            <MenuItem title='Filmes' imgSrc='https://starwars-visualguide.com/assets/img/categories/films.jpg' />
         </div>
       </section>
     </div>
