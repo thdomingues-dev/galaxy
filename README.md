@@ -3,5 +3,13 @@ This project is being developed with [NextJS](https://nextjs.org/) and [Tailwind
 
 ### Start ⚡
 ```javascript
-yarn dev
+yarn dev // development-env
 ```
+
+```javascript
+yarn build // production build
+```
+```javascript
+yarn build // simulate production-env (after build)
+```
+
