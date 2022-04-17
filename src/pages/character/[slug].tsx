@@ -44,13 +44,13 @@ const Character = ({ character }: CharacterProps): ReactElement => {
 
   return (
     <div className="w-4/5 m-auto">
-      <div className="h-screen flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center">
         <section className="bg-white w-3/4 rounded-lg flex justify-start items-center mb-8">
           <Image
             className="rounded-lg"
             src={`https://starwars-visualguide.com/assets/img/characters/${imgIndex}.jpg`}
-            height={300}
-            width={225}
+            height={250}
+            width={175}
             alt={`image${imgIndex}`}
           />
           <div className="ml-4">
@@ -75,7 +75,7 @@ const Character = ({ character }: CharacterProps): ReactElement => {
               {character.films.map((film, index) => (
                 <li key={index}>
                   <Image
-                    className="rounded-full"
+                    className="rounded-lg"
                     src={`https://starwars-visualguide.com/assets/img/films/${film.id}.jpg`}
                     height={64}
                     width={64}
@@ -95,7 +95,7 @@ const Character = ({ character }: CharacterProps): ReactElement => {
               {character.starships.map((starship, index) => (
                 <li key={index}>
                   <Image
-                    className="rounded-full"
+                    className="rounded-lg"
                     src={`https://starwars-visualguide.com/assets/img/starships/${starship.id}.jpg`}
                     height={64}
                     width={64}
@@ -115,7 +115,7 @@ const Character = ({ character }: CharacterProps): ReactElement => {
               {character.vehicles.map((vehicle, index) => (
                 <li key={index}>
                   <Image
-                    className="rounded-full"
+                    className="rounded-lg"
                     src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicle.id}.jpg`}
                     height={64}
                     width={64}

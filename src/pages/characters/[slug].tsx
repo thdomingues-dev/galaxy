@@ -36,7 +36,7 @@ interface CharactersProps {
 
 const Characters = ({ characters }: CharactersProps): ReactElement => {
   return (
-    <div className="h-screen flex flex-col justify-center text-center">
+    <div className=" flex flex-col justify-center text-center">
       <ul className="grid grid-cols-5 justify-items-center gap-4 px-60">
         {characters.map((character, index) => {
           const characterIndex = character.url.split('/').slice(5, -1)

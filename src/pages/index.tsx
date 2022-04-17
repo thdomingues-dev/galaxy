@@ -7,7 +7,7 @@ import MenuItem from '../components/menu-item'
 
 const Home: NextPage = () => {
   return (
-    <div className="h-screen flex flex-col justify-center text-center">
+    <div className="flex flex-col justify-center text-center">
       <Head>
         <title>Galaxypedia</title>
       </Head>
