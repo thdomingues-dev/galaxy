@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       </h1>
       <section className='px-80'>
         <div className='grid grid-cols-3'>
-          <Link href="/characters" passHref>
+          <Link href="/characters/1" passHref>
             <MenuItem title='Personagens' imgSrc='https://starwars-visualguide.com/assets/img/categories/character.jpg' />
           </Link>
             <MenuItem title='Planetas' imgSrc='https://starwars-visualguide.com/assets/img/categories/planets.jpg' />
