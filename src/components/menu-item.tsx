@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, memo } from 'react'
 import Image from 'next/image'
 
 interface MenuItemProps {
@@ -15,4 +15,4 @@ const MenuItem = ({ title, imgSrc, height = 400, width = 200, ...rest }: MenuIte
   </a>
 )
 
-export default MenuItem
+export default memo(MenuItem)
