@@ -1,5 +1,5 @@
 // Packages
-import { ReactElement, useEffect, useMemo, useState } from 'react'
+import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 
