@@ -9,12 +9,15 @@ import api from '../../services/api'
 // Models
 import { Character } from '../characters/[slug]'
 
+// Components
+import RelatedItems from '../../components/related-items'
+
 type HomeworldName = { homeworldName: string }
 
 interface Films {
   films: Array<{
     id: string
-    title: string
+    name: string
     url: string
   }>
 }
@@ -44,17 +47,17 @@ const Character = ({ character }: CharacterProps): ReactElement => {
 
   return (
     <div className="w-4/5 m-auto">
-      <div className="flex flex-col justify-center items-center">
-        <section className="bg-white w-3/4 rounded-lg flex justify-start items-center mb-8">
+      <div className="flex flex-col justify-center items-center mt-4">
+        <section className="bg-white shadow-lg w-3/4 rounded-lg flex justify-start items-center mb-4">
           <Image
-            className="rounded-lg"
+            className="rounded-l-lg"
             src={`https://starwars-visualguide.com/assets/img/characters/${imgIndex}.jpg`}
             height={250}
             width={175}
             alt={`image${imgIndex}`}
           />
           <div className="ml-4">
-            <ul className="text-left">
+            <ul className="text-left flex flex-col justify-between">
               <li className="text-lg font-bold">{character.name}</li>
               <li>Cidade natal: {character.homeworldName}</li>
               <li>Aniversário: {character.birth_year}</li>
@@ -68,65 +71,9 @@ const Character = ({ character }: CharacterProps): ReactElement => {
           </div>
         </section>
 
-        <section className="bg-white w-3/4 rounded-lg flex justify-start items-center  mb-8">
-          <div className="p-4">
-            <span className="text-lg font-bold">Filmes</span>
-            <ul className="text-left flex">
-              {character.films.map((film, index) => (
-                <li key={index}>
-                  <Image
-                    className="rounded-lg"
-                    src={`https://starwars-visualguide.com/assets/img/films/${film.id}.jpg`}
-                    height={64}
-                    width={64}
-                    alt={film.title}
-                  />
-                  {film.title}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="bg-white w-3/4 rounded-lg flex justify-start items-center  mb-8">
-          <div className="p-4">
-            <span className="text-lg font-bold">Naves Espaciais</span>
-            <ul className="text-left flex">
-              {character.starships.map((starship, index) => (
-                <li key={index}>
-                  <Image
-                    className="rounded-lg"
-                    src={`https://starwars-visualguide.com/assets/img/starships/${starship.id}.jpg`}
-                    height={64}
-                    width={64}
-                    alt={starship.name}
-                  />
-                  {starship.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="bg-white w-3/4 rounded-lg flex justify-start items-center  mb-8">
-          <div className="p-4">
-            <span className="text-lg font-bold">Veículos</span>
-            <ul className="text-left flex">
-              {character.vehicles.map((vehicle, index) => (
-                <li key={index}>
-                  <Image
-                    className="rounded-lg"
-                    src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicle.id}.jpg`}
-                    height={64}
-                    width={64}
-                    alt={vehicle.name}
-                  />
-                  {vehicle.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <RelatedItems title="Filmes" resource="films" items={character.films} />
+        <RelatedItems title="Naves Espaciais" resource="starships" items={character.starships} />
+        <RelatedItems title="Veículos" resource="vehicles" items={character.vehicles} />
       </div>
     </div>
   )
@@ -159,7 +106,7 @@ export const getStaticProps: GetStaticProps = async context => {
       const { data: film } = await api.get(`/films/${filmId}`)
       const filmIndex = film.url.split('/').slice(5, -1)[0]
 
-      return { id: filmIndex, title: film.title, url: film.url }
+      return { id: filmIndex, name: film.title, url: film.url }
     }),
   )
 

@@ -7,6 +7,9 @@ import Link from 'next/link'
 // Api
 import api from '../../services/api'
 
+// Components
+import Pagination from '../../components/pagination'
+
 export type Character = {
   name: string
   height: string
@@ -34,32 +37,35 @@ interface CharactersProps {
   characters: Array<Character>
 }
 
-const Characters = ({ characters }: CharactersProps): ReactElement => {
+const Characters = ({ characters, page, total, next, previous }: CharactersProps): ReactElement => {
   return (
-    <div className=" flex flex-col justify-center text-center">
-      <ul className="grid grid-cols-5 justify-items-center gap-4 px-60">
-        {characters.map((character, index) => {
-          const characterIndex = character.url.split('/').slice(5, -1)
+    <>
+      <div className=" flex flex-col justify-center text-center pt-16">
+        <ul className="grid grid-cols-5 justify-items-center gap-8 px-72">
+          {characters.map((character, index) => {
+            const characterIndex = character.url.split('/').slice(5, -1)
 
-          return (
-            <li key={index} className="bg-white w-fit">
-              <Link href={`/character/${characterIndex}`}>
-                <a className="flex flex-col">
-                  <Image
-                    className="rounded-t-lg"
-                    src={`https://starwars-visualguide.com/assets/img/characters/${characterIndex}.jpg`}
-                    height={300}
-                    width={225}
-                    alt={`image${index}`}
-                  />
-                  <span className="bg-black text-yellow-400 rounded-b-lg">{character.name}</span>
-                </a>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </div>
+            return (
+              <li key={index} className="w-full rounded-lg">
+                <Link href={`/character/${characterIndex}`}>
+                  <a className="flex flex-col rounded-lg hover:shadow-md hover:shadow-yellow-400">
+                    <Image
+                      className="rounded-t-lg"
+                      src={`https://starwars-visualguide.com/assets/img/characters/${characterIndex}.jpg`}
+                      height={300}
+                      width={200}
+                      alt={`image${index}`}
+                    />
+                    <span className="bg-black text-yellow-400 rounded-b-lg">{character.name}</span>
+                  </a>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <Pagination page={page} total={total} next={next} previous={previous} />
+    </>
   )
 }
 
@@ -82,7 +88,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
   return {
     props: {
-      page: slug,
+      page: Number(slug),
       total: data.count,
       next: data.next,
       previous: data.previous,
