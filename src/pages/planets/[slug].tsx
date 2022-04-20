@@ -9,7 +9,7 @@ import api from '../../services/api'
 import Pagination from '../../components/pagination'
 import ListItem from '../../components/list-item'
 
-interface Planet {
+export interface Planet {
   name: string
   rotation_period: string
   orbital_period: string
