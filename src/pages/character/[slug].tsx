@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
   const { data: character } = await api.get(`/people/${slug}`).catch(() => ({ data: null }))
 
-  const planetIndex: string = character.homeworld.split('/').slice(5, -1)
+  const planetIndex: string = character.homeworld.split('/').slice(5, -1)[0]
   const { data: planet } = await api.get(`/planets/${planetIndex}`)
 
   const filmsIndex: Array<string> = character.films.map((film: string) => film.split('/').slice(5, -1))
