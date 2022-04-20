@@ -17,10 +17,7 @@ const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElem
 
   const nextPage = useMemo(() => {
     if (next) {
-      const prefix = '/characters/'
-      const parsedUrl = prefix.concat(String(page + 1))
-
-      return parsedUrl
+      return String(page + 1)
     }
 
     return null
@@ -28,10 +25,7 @@ const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElem
 
   const previousPage = useMemo(() => {
     if (previous) {
-      const prefix = '/characters/'
-      const parsedUrl = prefix.concat(String(page - 1))
-
-      return parsedUrl
+      return String(page - 1)
     }
 
     return null

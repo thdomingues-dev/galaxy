@@ -1,14 +1,13 @@
 // Packages
 import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 
 // Api
 import api from '../../services/api'
 
 // Components
 import Pagination from '../../components/pagination'
+import ListItem from '../../components/list-item'
 
 export type Character = {
   name: string
@@ -37,37 +36,30 @@ interface CharactersProps {
   characters: Array<Character>
 }
 
-const Characters = ({ characters, page, total, next, previous }: CharactersProps): ReactElement => {
-  return (
-    <>
-      <div className=" flex flex-col justify-center text-center pt-16">
-        <ul className="grid grid-cols-5 justify-items-center gap-8 px-72">
-          {characters.map((character, index) => {
-            const characterIndex = character.url.split('/').slice(5, -1)
+const Characters = ({ characters, page, total, next, previous }: CharactersProps): ReactElement => (
+  <>
+    <div className=" flex flex-col justify-center text-center pt-16">
+      <ul className="grid grid-cols-5 justify-items-center gap-8 px-72">
+        {characters.map((character, index) => {
+          const characterIndex = character.url.split('/').slice(5, -1)[0]
 
-            return (
-              <li key={index} className="w-full rounded-lg">
-                <Link href={`/character/${characterIndex}`}>
-                  <a className="flex flex-col rounded-lg hover:shadow-md hover:shadow-yellow-400">
-                    <Image
-                      className="rounded-t-lg"
-                      src={`https://starwars-visualguide.com/assets/img/characters/${characterIndex}.jpg`}
-                      height={300}
-                      width={200}
-                      alt={`image${index}`}
-                    />
-                    <span className="bg-black text-yellow-400 rounded-b-lg">{character.name}</span>
-                  </a>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      <Pagination page={page} total={total} next={next} previous={previous} />
-    </>
-  )
-}
+          return (
+            <li key={index} className="w-full rounded-lg">
+              <ListItem
+                title={character.name}
+                link={characterIndex}
+                referece="characters"
+                referenceId={characterIndex}
+                altMessage={`character ${character.name}`}
+              />
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+    <Pagination page={page} total={total} next={next} previous={previous} />
+  </>
+)
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await api.get('people')
