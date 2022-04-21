@@ -1,5 +1,5 @@
 // Packages
-import { ReactElement } from 'react'
+import { ReactElement, memo } from 'react'
 
 // Image
 import Image from 'next/image'
@@ -44,4 +44,4 @@ const RelatedItems = ({ title, resource, items }: RelatedItemsProps): ReactEleme
   </section>
 )
 
-export default RelatedItems
+export default memo(RelatedItems)
