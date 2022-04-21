@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 
 // Components
-import MenuItem from '../components/menu-item'
+import MenuItem from '../components/menu/menu-item'
+import Menu from '../components/menu/menu'
 
 const Home: NextPage = () => {
   return (
@@ -12,20 +12,25 @@ const Home: NextPage = () => {
         <title>Galaxypedia</title>
       </Head>
       <h1 className="text-3xl font-bold mb-16">Galaxypedia</h1>
-      <section className="mx-auto py-40">
-        <div className="grid grid-cols-3">
-          <Link href="/characters/1" passHref>
-            <MenuItem
-              title="Personagens"
-              imgSrc="https://starwars-visualguide.com/assets/img/categories/character.jpg"
-            />
-          </Link>
-          <Link href="/planets/1" passHref>
-            <MenuItem title="Planetas" imgSrc="https://starwars-visualguide.com/assets/img/categories/planets.jpg" />
-          </Link>
-          <MenuItem title="Filmes" imgSrc="https://starwars-visualguide.com/assets/img/categories/films.jpg" />
-        </div>
-      </section>
+      <Menu>
+        <MenuItem
+          title="Personagens"
+          imgSrc="https://starwars-visualguide.com/assets/img/categories/character.jpg"
+          linkPath="/characters/1"
+        />
+
+        <MenuItem
+          title="Planetas"
+          imgSrc="https://starwars-visualguide.com/assets/img/categories/planets.jpg"
+          linkPath="/planets/1"
+        />
+
+        <MenuItem
+          title="Filmes"
+          imgSrc="https://starwars-visualguide.com/assets/img/categories/films.jpg"
+          linkPath="/films/1"
+        />
+      </Menu>
     </div>
   )
 }
