@@ -1,5 +1,5 @@
 // Packages
-import { ReactElement } from 'react'
+import { ReactElement, memo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -29,4 +29,4 @@ const ListItem = ({ link, altMessage, title, referece, referenceId }: ListItemPr
   </Link>
 )
 
-export default ListItem
+export default memo(ListItem)
