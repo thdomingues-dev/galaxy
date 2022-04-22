@@ -2,6 +2,7 @@
 import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Api
 import api from '../../services/api'
@@ -44,6 +45,7 @@ interface CharacterProps {
 
 const Character = ({ character }: CharacterProps): ReactElement => {
   const imgIndex = character.url.split('/').slice(5, -1)
+  const planetId = character.homeworld.split('/').slice(5, -1)[0]
 
   return (
     <div className="w-4/5 m-auto">
@@ -59,7 +61,12 @@ const Character = ({ character }: CharacterProps): ReactElement => {
           <div className="ml-4">
             <ul className="text-left flex flex-col justify-between">
               <li className="text-lg font-bold">{character.name}</li>
-              <li>Cidade natal: {character.homeworldName}</li>
+              <li>
+                Cidade natal:
+                <Link href={`/planet/${planetId}`}>
+                  <a>{character.homeworldName}</a>
+                </Link>
+              </li>
               <li>Aniversário: {character.birth_year}</li>
               <li>Espécie: {(character.species.length && character.species) || 'N/A'}</li>
               <li>Altura: {character.height} cm</li>
@@ -71,7 +78,7 @@ const Character = ({ character }: CharacterProps): ReactElement => {
           </div>
         </section>
 
-        <RelatedItems title="Filmes" resource="films" items={character.films} />
+        <RelatedItems title="Filmes" resource="films" items={character.films} hasLink />
         <RelatedItems title="Naves Espaciais" resource="starships" items={character.starships} />
         <RelatedItems title="Veículos" resource="vehicles" items={character.vehicles} />
       </div>
