@@ -14,13 +14,13 @@ const PageHeader = (): ReactElement => {
 
   return (
     <div className="w-4/5 m-auto py-4 flex justify-between">
-      <span className="font-bold cursor-pointer" onClick={handleOnClickLogo}>
+      <h1 className="text-lg text-purple-700 font-bold cursor-pointer" onClick={handleOnClickLogo}>
         Galaxypedia
-      </span>
-      <span className="flex items-center cursor-pointer" onClick={handleOnClickBack}>
+      </h1>
+      <button className="flex items-center cursor-pointer hover:text-purple-700" onClick={handleOnClickBack}>
         <ArrowLeftIcon size={20} className="mr-1" />
         Voltar
-      </span>
+      </button>
     </div>
   )
 }
