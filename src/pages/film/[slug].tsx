@@ -65,7 +65,7 @@ const Film = ({ film }: FilmProps): ReactElement => {
           </div>
         </section>
 
-        <RelatedItems title="Personagens" resource="characters" items={film.characters} />
+        <RelatedItems title="Personagens" resource="characters" items={film.characters} hasLink />
         <RelatedItems title="Naves Espaciais" resource="starships" items={film.starships} />
         <RelatedItems title="Planetas" resource="planets" items={film.planets} />
       </div>

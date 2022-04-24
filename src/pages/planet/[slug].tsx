@@ -62,7 +62,7 @@ const Planet = ({ planet }: PlanetProps): ReactElement => {
         </section>
 
         <RelatedItems title="Filmes" resource="films" items={planet.films} />
-        <RelatedItems title="Moradores" resource="characters" items={planet.residents} />
+        <RelatedItems title="Moradores" resource="characters" items={planet.residents} hasLink />
       </div>
     </div>
   )
