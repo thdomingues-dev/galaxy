@@ -13,7 +13,7 @@ const PageHeader = (): ReactElement => {
   const handleOnClickLogo = () => router.push('/')
 
   return (
-    <div className="w-4/5 m-auto py-4 flex justify-between">
+    <div className="2xl:w-4/5 m-auto py-4 flex justify-between w-full px-4">
       <h1 className="text-lg text-purple-700 font-bold cursor-pointer" onClick={handleOnClickLogo}>
         Galaxypedia
       </h1>

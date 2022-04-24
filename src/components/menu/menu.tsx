@@ -5,8 +5,8 @@ interface MenuProps {
 }
 
 const Menu = ({ children }: MenuProps): ReactElement => (
-  <section className="mx-auto py-40">
-    <div className="grid grid-cols-3">{children}</div>
+  <section className="mx-auto md:py-20 2xl:py-40">
+    <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-1">{children}</div>
   </section>
 )
 
