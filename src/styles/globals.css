@@ -22,3 +22,11 @@ body {
 * {
   box-sizing: border-box;
 }
+
+body, input, textarea, button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Share Tech Mono', monospace;
+}
