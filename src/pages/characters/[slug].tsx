@@ -38,8 +38,9 @@ interface CharactersProps {
 
 const Characters = ({ characters, page, total, next, previous }: CharactersProps): ReactElement => (
   <>
-    <div className=" flex flex-col justify-center text-center pt-16">
-      <ul className="grid grid-cols-5 justify-items-center gap-8 px-72">
+    <div className="flex flex-col justify-center text-center">
+      <h1 className="text-xl md:text-2xl text-gray-600 mb-2">Personagens</h1>
+      <ul className="w-4/5 m-auto py-4 grid grid-cols-2 gap-4 justify-items-center sm:grid-cols-4 xl:grid-cols-5 xl:gap-8 xl:px-40">
         {characters.map((character, index) => {
           const characterIndex = character.url.split('/').slice(5, -1)[0]
 
