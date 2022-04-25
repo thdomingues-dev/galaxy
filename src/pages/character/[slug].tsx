@@ -2,7 +2,6 @@
 import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 
 // Api
 import api from '../../services/api'
@@ -12,6 +11,7 @@ import { Character } from '../characters/[slug]'
 
 // Components
 import RelatedItems from '../../components/related-items'
+import DetailField from '../../components/detail-field'
 
 type HomeworldName = { homeworldName: string }
 
@@ -48,9 +48,9 @@ const Character = ({ character }: CharacterProps): ReactElement => {
   const planetId = character.homeworld.split('/').slice(5, -1)[0]
 
   return (
-    <div className="w-4/5 m-auto">
+    <div className="md:w-4/5 w-full px-4 m-auto">
       <div className="flex flex-col justify-center items-center mt-4">
-        <section className="bg-white shadow-lg w-3/4 rounded-lg flex justify-start items-center mb-4">
+        <section className="bg-white shadow-lg 2xl:w-3/4 w-full rounded-lg flex justify-start items-center mb-4">
           <Image
             className="rounded-l-lg"
             src={`https://starwars-visualguide.com/assets/img/characters/${imgIndex}.jpg`}
@@ -59,22 +59,17 @@ const Character = ({ character }: CharacterProps): ReactElement => {
             alt={`image${imgIndex}`}
           />
           <div className="ml-4">
-            <ul className="text-left flex flex-col justify-between">
-              <li className="text-lg font-bold">{character.name}</li>
-              <li>
-                Cidade natal:
-                <Link href={`/planet/${planetId}`}>
-                  <a>{character.homeworldName}</a>
-                </Link>
-              </li>
-              <li>Aniversário: {character.birth_year}</li>
-              <li>Espécie: {(character.species.length && character.species) || 'N/A'}</li>
-              <li>Altura: {character.height} cm</li>
-              <li>Peso: {character.mass} kg</li>
-              <li>Gênero: {character.gender}</li>
-              <li>Cor do cabelo: {character.hair_color}</li>
-              <li>Cor de pele: {character.skin_color}</li>
-            </ul>
+            <div className="text-left flex flex-col justify-between">
+              <h1 className="text-xl font-bold">{character.name}</h1>
+              <DetailField label="Cidade Natal" value={character.homeworldName} link={`/planet/${planetId}`} />
+              <DetailField label="Aniversário" value={character.birth_year} />
+              <DetailField label="Espécie" value={(character.species.length && character.species[0]) || 'N/A'} />
+              <DetailField label="Altura" value={`${character.height} cm`} />
+              <DetailField label="Peso" value={`${character.mass} kg`} />
+              <DetailField label="Gênero" value={character.gender} />
+              <DetailField label="Cor do Cabelo" value={character.hair_color} />
+              <DetailField label="Cor de Pele" value={character.skin_color} />
+            </div>
           </div>
         </section>
 

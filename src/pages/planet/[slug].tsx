@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 // Components
 import RelatedItems from '../../components/related-items'
+import DetailField from '../../components/detail-field'
 
 // Api
 import api from '../../services/api'
@@ -36,9 +37,9 @@ const Planet = ({ planet }: PlanetProps): ReactElement => {
   const imgIndex = planet.url.split('/').slice(5, -1)
 
   return (
-    <div className="w-4/5 m-auto">
+    <div className="md:w-4/5 w-full px-4 m-auto">
       <div className="flex flex-col justify-center items-center mt-4">
-        <section className="bg-white shadow-lg w-3/4 rounded-lg flex justify-start items-center mb-4">
+        <section className="bg-white shadow-lg 2xl:w-3/4 w-full rounded-lg flex justify-start items-center mb-4">
           <Image
             className="rounded-l-lg"
             src={`https://starwars-visualguide.com/assets/img/planets/${imgIndex}.jpg`}
@@ -47,21 +48,21 @@ const Planet = ({ planet }: PlanetProps): ReactElement => {
             alt={`image${imgIndex}`}
           />
           <div className="ml-4">
-            <ul className="text-left flex flex-col justify-between">
-              <li className="text-lg font-bold">{planet.name}</li>
-              <li>Populacão: {planet.population}</li>
-              <li>Período rotacão: {planet.rotation_period} dias</li>
-              <li>Período orbital: {planet.orbital_period} dias</li>
-              <li>Diâmetro: {planet.diameter} km</li>
-              <li>Gravidade: {planet.gravity}</li>
-              <li>Terreno: {planet.terrain}</li>
-              <li>Superfície água: {planet.surface_water}%</li>
-              <li>Clima: {planet.climate}</li>
-            </ul>
+            <div className="text-left flex flex-col justify-between">
+              <h1 className="text-xl font-bold">{planet.name}</h1>
+              <DetailField label="Populacão" value={planet.population} />
+              <DetailField label="Período rotacão" value={`${planet.rotation_period} dias`} />
+              <DetailField label="Período orbital" value={`${planet.orbital_period} dias`} />
+              <DetailField label="Diâmetro" value={`${planet.diameter} Km`} />
+              <DetailField label="Gravidade" value={planet.gravity} />
+              <DetailField label="Terreno" value={planet.terrain} />
+              <DetailField label="Superfície de água" value={`${planet.surface_water}%`} />
+              <DetailField label="Clima" value={planet.climate} />
+            </div>
           </div>
         </section>
 
-        <RelatedItems title="Filmes" resource="films" items={planet.films} />
+        <RelatedItems title="Filmes" resource="films" items={planet.films} hasLink />
         <RelatedItems title="Moradores" resource="characters" items={planet.residents} hasLink />
       </div>
     </div>
