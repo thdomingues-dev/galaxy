@@ -2,12 +2,14 @@
 import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
+import { format } from 'date-fns'
 
 // Api
 import api from '../../services/api'
 
 // Components
 import RelatedItems from '../../components/related-items'
+import DetailField from '../../components/detail-field'
 
 // Models
 import { Film } from '../../models/resources'
@@ -42,11 +44,12 @@ interface FilmProps {
 
 const Film = ({ film }: FilmProps): ReactElement => {
   const imgIndex = film.url.split('/').slice(5, -1)
+  const formatedDate = format(new Date(film.release_date), 'dd / MM / yyyy')
 
   return (
-    <div className="w-4/5 m-auto">
+    <div className="md:w-4/5 w-full px-4 m-auto">
       <div className="flex flex-col justify-center items-center mt-4">
-        <section className="bg-white shadow-lg w-3/4 rounded-lg flex justify-start items-center mb-4">
+        <section className="bg-white shadow-lg 2xl:w-3/4 w-full rounded-lg flex justify-start items-center mb-4">
           <Image
             className="rounded-l-lg"
             src={`https://starwars-visualguide.com/assets/img/films/${imgIndex}.jpg`}
@@ -55,13 +58,13 @@ const Film = ({ film }: FilmProps): ReactElement => {
             alt={`image${imgIndex}`}
           />
           <div className="ml-4">
-            <ul className="text-left flex flex-col justify-between">
-              <li className="text-lg font-bold">{film.title}</li>
-              <li>Diretor: {film.director}</li>
-              <li>Produtor: {film.producer}</li>
-              <li>Lancamento: {film.release_date}</li>
-              <li>Sinópse: {film.opening_crawl}</li>
-            </ul>
+            <div className="text-left flex flex-col justify-between">
+              <h1 className="text-xl font-bold">{film.title}</h1>
+              <DetailField label="Lancamento" value={formatedDate.toString()} />
+              <DetailField label="Capítulo" value={film.episode_id.toString()} />
+              <DetailField label="Diretor" value={film.director} />
+              <DetailField label="Produtor" value={film.producer} />
+            </div>
           </div>
         </section>
 
