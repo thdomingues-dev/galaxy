@@ -56,7 +56,7 @@ const Films = ({ films, page, total, next, previous }: FilmsProps): ReactElement
         })}
       </ul>
     </div>
-    <Pagination page={page} total={total} next={next} previous={previous} />
+    <Pagination resource="films" page={page} total={total} next={next} previous={previous} />
   </>
 )
 

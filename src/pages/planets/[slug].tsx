@@ -57,7 +57,7 @@ const Planets = ({ planets, page, total, next, previous }: PlanetsProps): ReactE
           })}
         </ul>
       </div>
-      <Pagination page={page} total={total} next={next} previous={previous} />
+      <Pagination resource="planets" page={page} total={total} next={next} previous={previous} />
     </>
   )
 }
