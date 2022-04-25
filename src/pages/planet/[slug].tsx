@@ -35,6 +35,8 @@ interface PlanetProps {
 
 const Planet = ({ planet }: PlanetProps): ReactElement => {
   const imgIndex = planet.url.split('/').slice(5, -1)
+  const population = Number(planet.population).toLocaleString('pt-BR')
+  const diameter = Number(planet.diameter).toLocaleString('pt-BR')
 
   return (
     <div className="md:w-4/5 w-full px-4 m-auto">
@@ -50,10 +52,10 @@ const Planet = ({ planet }: PlanetProps): ReactElement => {
           <div className="ml-4">
             <div className="text-left flex flex-col justify-between">
               <h1 className="text-xl font-bold">{planet.name}</h1>
-              <DetailField label="Populacão" value={planet.population} />
+              <DetailField label="Populacão" value={population} />
               <DetailField label="Período rotacão" value={`${planet.rotation_period} dias`} />
               <DetailField label="Período orbital" value={`${planet.orbital_period} dias`} />
-              <DetailField label="Diâmetro" value={`${planet.diameter} Km`} />
+              <DetailField label="Diâmetro" value={`${diameter} Km`} />
               <DetailField label="Gravidade" value={planet.gravity} />
               <DetailField label="Terreno" value={planet.terrain} />
               <DetailField label="Superfície de água" value={`${planet.surface_water}%`} />

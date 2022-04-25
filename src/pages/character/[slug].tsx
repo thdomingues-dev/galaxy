@@ -63,7 +63,7 @@ const Character = ({ character }: CharacterProps): ReactElement => {
               <h1 className="text-xl font-bold">{character.name}</h1>
               <DetailField label="Cidade Natal" value={character.homeworldName} link={`/planet/${planetId}`} />
               <DetailField label="Aniversário" value={character.birth_year} />
-              <DetailField label="Espécie" value={(character.species.length && character.species[0]) || 'N/A'} />
+              <DetailField label="Espécie" value={(character.species.length && character.species[0]) || 'n/a'} />
               <DetailField label="Altura" value={`${character.height} cm`} />
               <DetailField label="Peso" value={`${character.mass} kg`} />
               <DetailField label="Gênero" value={character.gender} />
