@@ -10,17 +10,17 @@ interface DetailFieldProps {
 
 const DetailtField = ({ label, value, link }: DetailFieldProps): ReactElement => {
   return !link ? (
-    <p className="flex">
+    <div className="flex">
       <h6 className="mr-1">{label}:</h6>
       <span className="text-gray-600">{value}</span>
-    </p>
+    </div>
   ) : (
-    <p className="flex">
+    <div className="flex">
       <h6 className="mr-1">{label}:</h6>
       <Link href={link}>
         <a className="text-purple-700">{value}</a>
       </Link>
-    </p>
+    </div>
   )
 }
 
