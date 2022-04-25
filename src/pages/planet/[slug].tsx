@@ -13,6 +13,9 @@ import api from '../../services/api'
 // Models
 import { Planet } from '../planets/[slug]'
 
+// Configs
+import { translate } from '../../configs/translate'
+
 interface Films {
   films: Array<{
     id: string
@@ -57,9 +60,9 @@ const Planet = ({ planet }: PlanetProps): ReactElement => {
               <DetailField label="Período orbital" value={`${planet.orbital_period} dias`} />
               <DetailField label="Diâmetro" value={`${diameter} Km`} />
               <DetailField label="Gravidade" value={planet.gravity} />
-              <DetailField label="Terreno" value={planet.terrain} />
+              <DetailField label="Terreno" value={translate(planet.terrain)} />
               <DetailField label="Superfície de água" value={`${planet.surface_water}%`} />
-              <DetailField label="Clima" value={planet.climate} />
+              <DetailField label="Clima" value={translate(planet.climate)} />
             </div>
           </div>
         </section>

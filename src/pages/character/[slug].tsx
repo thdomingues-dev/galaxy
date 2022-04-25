@@ -3,11 +3,14 @@ import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 
+// Configs
+import { translate } from '../../configs/translate'
+
 // Api
 import api from '../../services/api'
 
 // Models
-import { Character } from '../characters/[slug]'
+import { Character } from '../characters'
 
 // Components
 import RelatedItems from '../../components/related-items'
@@ -66,9 +69,9 @@ const Character = ({ character }: CharacterProps): ReactElement => {
               <DetailField label="Espécie" value={(character.species.length && character.species[0]) || 'n/a'} />
               <DetailField label="Altura" value={`${character.height} cm`} />
               <DetailField label="Peso" value={`${character.mass} kg`} />
-              <DetailField label="Gênero" value={character.gender} />
-              <DetailField label="Cor do Cabelo" value={character.hair_color} />
-              <DetailField label="Cor de Pele" value={character.skin_color} />
+              <DetailField label="Gênero" value={translate(character.gender)} />
+              <DetailField label="Cor do Cabelo" value={translate(character.hair_color)} />
+              <DetailField label="Cor de Pele" value={translate(character.skin_color)} />
             </div>
           </div>
         </section>
