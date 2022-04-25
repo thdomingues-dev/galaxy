@@ -32,16 +32,16 @@ const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElem
   }, [previous, page])
 
   return (
-    <div className="flex justify-end mt-8 px-72">
+    <div className="flex justify-center sm:justify-end my-4 px-4 2xl:w-4/5 m-auto">
       {previous && previousPage ? (
         <Link href={previousPage}>
-          <a className="flex items-center hover:text-yellow-400 cursor-pointer">
+          <a className="flex items-center hover:text-purple-700 cursor-pointer">
             <ChevronLeftIcon />
             <span>Anterior</span>
           </a>
         </Link>
       ) : (
-        <a className="flex items-center">
+        <a className="flex items-center text-gray-600 cursor-not-allowed">
           <ChevronLeftIcon />
           <span>Anterior</span>
         </a>
@@ -51,13 +51,13 @@ const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElem
 
       {next && nextPage ? (
         <Link href={nextPage}>
-          <a className="flex items-center hover:text-yellow-400 cursor-pointer">
+          <a className="flex items-center hover:text-purple-700 cursor-pointer">
             <span>Próxima</span>
             <ChevronRightIcon />
           </a>
         </Link>
       ) : (
-        <a className="flex items-center">
+        <a className="flex items-center text-gray-600 cursor-not-allowed">
           <span>Próxima</span>
           <ChevronRightIcon />
         </a>

@@ -16,7 +16,7 @@ interface ListItemProps {
 
 const ListItem = ({ link, altMessage, title, referece, referenceId }: ListItemProps): ReactElement => (
   <Link href={`/${referece.substring(0, referece.length - 1)}/${link}`}>
-    <a className="flex flex-col rounded-lg hover:shadow-md hover:shadow-yellow-400">
+    <a className="flex flex-col rounded-lg hover:shadow-xl hover:text-purple-700 hover:tracking-wide">
       <Image
         className="rounded-t-lg"
         src={`https://starwars-visualguide.com/assets/img/${referece}/${referenceId}.jpg`}
@@ -24,7 +24,7 @@ const ListItem = ({ link, altMessage, title, referece, referenceId }: ListItemPr
         width={200}
         alt={`image ${altMessage}`}
       />
-      <span className="bg-black text-yellow-400 rounded-b-lg">{title}</span>
+      <span className="bg-white rounded-b-lg border-b-2 ">{title}</span>
     </a>
   </Link>
 )
