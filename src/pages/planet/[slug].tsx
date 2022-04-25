@@ -10,7 +10,7 @@ import { RelatedItems, DetailField } from '../../components'
 import api from '../../services/api'
 
 // Models
-import { Planet } from '../planets/[slug]'
+import { Planet } from '../../models/resources'
 
 // Configs
 import { translate } from '../../configs/translate'

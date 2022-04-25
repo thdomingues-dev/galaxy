@@ -10,7 +10,7 @@ import { translate } from '../../configs/translate'
 import api from '../../services/api'
 
 // Models
-import { Character } from '../characters'
+import { Character } from '../../models/resources'
 
 // Components
 import { RelatedItems, DetailField } from '../../components'
