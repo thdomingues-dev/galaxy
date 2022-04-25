@@ -1,6 +1,7 @@
 // Packages
 import { ReactElement } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
 
 // Api
 import api from '../../services/api'
@@ -36,6 +37,9 @@ interface FilmsProps {
 
 const Films = ({ films, page, total, next, previous }: FilmsProps): ReactElement => (
   <>
+    <Head>
+      <title>Galaxypedia | Filmes</title>
+    </Head>
     <div className=" flex flex-col justify-center text-center">
       <h1 className="text-xl md:text-2xl text-gray-600 mb-2">Filmes</h1>
       <ul className="w-4/5 m-auto py-4 grid grid-cols-2 gap-4 justify-items-center sm:grid-cols-4 xl:grid-cols-5 xl:gap-8 xl:px-40">
