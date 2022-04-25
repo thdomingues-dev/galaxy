@@ -1,6 +1,6 @@
 // Packages
 import { ReactElement } from 'react'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetServerSideProps } from 'next'
 
 // Api
 import api from '../../services/api'
@@ -58,36 +58,22 @@ const Characters = ({ characters, page, total, next, previous }: CharactersProps
         })}
       </ul>
     </div>
-    <Pagination page={page} total={total} next={next} previous={previous} />
+    <Pagination resource="characters" isServerSide page={page} total={total} next={next} previous={previous} />
   </>
 )
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await api.get('people')
-
-  const paths = [...Array(Math.ceil(data?.count / 10))].map((_, index) => ({
-    params: { slug: (index + 1).toString() },
-  }))
-
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}
-
-export const getStaticProps: GetStaticProps = async context => {
-  const { slug } = context.params || { slug: '1' }
-  const { data } = await api.get(`people/?page=${slug}`)
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { page } = context.query || { page: 1 }
+  const { data } = await api.get(`people/?page=${page}`)
 
   return {
     props: {
-      page: Number(slug),
+      page: Number(page),
       total: data.count,
       next: data.next,
       previous: data.previous,
       characters: data.results,
     },
-    revalidate: 60 * 60,
   }
 }
 

@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <MenuItem
           title="Personagens"
           imgSrc="https://starwars-visualguide.com/assets/img/categories/character.jpg"
-          linkPath="/characters/1"
+          linkPath="/characters/?page=1"
         />
 
         <MenuItem
