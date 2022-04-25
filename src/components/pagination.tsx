@@ -10,9 +10,11 @@ interface PaginationProps {
   next: string | null
   previous: string | null
   page: number
+  resource: string
+  isServerSide?: boolean
 }
 
-const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElement => {
+const Pagination = ({ total, next, previous, page, resource, isServerSide = false }: PaginationProps): ReactElement => {
   const totalPages = useMemo(() => Math.ceil(total / 10), [total])
 
   const nextPage = useMemo(() => {
@@ -34,7 +36,7 @@ const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElem
   return (
     <div className="flex justify-center sm:justify-end my-4 px-4 2xl:w-4/5 m-auto">
       {previous && previousPage ? (
-        <Link href={previousPage}>
+        <Link href={isServerSide ? `/${resource}/?page=${previousPage}` : `/${resource}/${previousPage}`}>
           <a className="flex items-center hover:text-purple-700 cursor-pointer">
             <ChevronLeftIcon />
             <span>Anterior</span>
@@ -50,7 +52,7 @@ const Pagination = ({ total, next, previous, page }: PaginationProps): ReactElem
       <span className="mx-2">{`${page} de ${totalPages}`}</span>
 
       {next && nextPage ? (
-        <Link href={nextPage}>
+        <Link href={isServerSide ? `/${resource}/?page=${nextPage}` : `/${resource}/${nextPage}`}>
           <a className="flex items-center hover:text-purple-700 cursor-pointer">
             <span>Próxima</span>
             <ChevronRightIcon />
