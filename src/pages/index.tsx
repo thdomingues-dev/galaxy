@@ -2,8 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 // Components
-import MenuItem from '../components/menu/menu-item'
-import Menu from '../components/menu/menu'
+import { Menu, MenuItem } from '../components'
 
 const Home: NextPage = () => {
   return (

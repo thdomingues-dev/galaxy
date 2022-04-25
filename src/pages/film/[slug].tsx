@@ -8,8 +8,7 @@ import { format } from 'date-fns'
 import api from '../../services/api'
 
 // Components
-import RelatedItems from '../../components/related-items'
-import DetailField from '../../components/detail-field'
+import { RelatedItems, DetailField } from '../../components'
 
 // Models
 import { Film } from '../../models/resources'

@@ -13,8 +13,7 @@ import api from '../../services/api'
 import { Character } from '../characters'
 
 // Components
-import RelatedItems from '../../components/related-items'
-import DetailField from '../../components/detail-field'
+import { RelatedItems, DetailField } from '../../components'
 
 type HomeworldName = { homeworldName: string }
 

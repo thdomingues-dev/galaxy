@@ -2,7 +2,7 @@
 import type { AppProps } from 'next/app'
 
 // Components
-import PageHeader from '../components/page-header'
+import { PageHeader } from '../components'
 
 // Styles
 import '../styles/globals.css'

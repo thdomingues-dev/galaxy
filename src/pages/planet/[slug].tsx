@@ -4,8 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 
 // Components
-import RelatedItems from '../../components/related-items'
-import DetailField from '../../components/detail-field'
+import { RelatedItems, DetailField } from '../../components'
 
 // Api
 import api from '../../services/api'

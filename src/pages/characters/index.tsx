@@ -7,8 +7,7 @@ import Head from 'next/head'
 import api from '../../services/api'
 
 // Components
-import Pagination from '../../components/pagination'
-import ListItem from '../../components/list-item'
+import { Pagination, ListItem } from '../../components'
 
 export type Character = {
   name: string
