@@ -129,7 +129,7 @@ const RelatedItems = ({ title, resource, items, hasLink = false }: RelatedItemsP
         ) : (
           <>
             <br />
-            <span>Nenhum registro encontado</span>
+            <span>Nenhum registro encontrado</span>
           </>
         )}
       </div>
